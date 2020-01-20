@@ -2,9 +2,16 @@ import json
 from datetime import datetime
 import calendar
 import pytz
+import io
+import sys  
+
+
+reload(sys)  
+sys.setdefaultencoding('utf8')
+
 
 def read_json_files(path_to_file): 
-    with open(path_to_file, encoding="UTF-8") as p: 
+    with io.open(path_to_file,"r", encoding="UTF-8") as p: 
         data = json.load(p) 
         p.close()
     return reversed(data['conversation'])
@@ -25,7 +32,7 @@ def time_zone(date, time):
 if __name__ == '__main__':
     sender = ""
     tmp = ""
-    data = read_json_files("./Test.json")
+    data = read_json_files("./Freemy17.json")
     # for item in data['conversation']:
     for item in data:
         tmp = sender
